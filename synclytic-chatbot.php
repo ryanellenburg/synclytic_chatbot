@@ -224,7 +224,7 @@ function processSelection($selection) {
                 }
                 $contact_method = sanitize_text_field($_POST['contact_method']);
 
-                echo "<p>Thank you for all that, " . htmlspecialchars($first_name) . ". I am your virtual assistant and will do my best to help answer any question you have. Please remember that even the best AI out there can make mistakes. So if you need further assistance or want to speak to a human, just let me know!</p>";
+                echo "<p>Thank you for all that, " . esc_html($first_name) . ". I am your virtual assistant and will do my best to help answer any question you have. Please remember that even the best AI out there can make mistakes. So if you need further assistance or want to speak to a human, just let me know!</p>";
 
                 echo "<p>What question can I help you with?</p>";
                 echo "<form method='post' action=''>";
@@ -251,7 +251,11 @@ function processSelection($selection) {
                         echo "<p>Sorry, there was an error processing your request. AI isn't perfect... yet. Please try again later or you can always speak with a human.</p>";
                     } else {
                         $body = json_decode(wp_remote_retrieve_body($response), true);
-                        echo "<p>AI Response: " . htmlspecialchars($body['choices'][0]['message']['content']) . "</p>";
+                        if (!empty($body['choices'][0]['message']['content'])) {
+                            echo "<p>AI Response: " . esc_html($body['choices'][0]['message']['content']) . "</p>";
+                        } else {
+                            echo "<p>Sorry, I couldn't get a response right now. Please try again later or speak to a human.</p>";
+                        }
                     }
                 }
             }
