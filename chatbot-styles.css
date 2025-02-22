@@ -1,0 +1,33 @@
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+p {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+button:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
+
+input:focus, textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px #4CAF50;
+}
