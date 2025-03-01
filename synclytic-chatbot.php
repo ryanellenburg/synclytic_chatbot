@@ -1,3 +1,7 @@
+// TODO choose betweek Grok 3 and ChatGPT 3.5
+// TODO add sales pitch attitude to AI theme
+// TODO ensure asking for a human doesn't repeat the same questions if already filled out on AI form beforehand
+
 /*
 Comprehensive PHP Chatbot for Investors and Prospects
 =====================================================
@@ -59,7 +63,7 @@ function validate_name($name) {
 function chatbot_handler() {
     // Display greeting and initial options
     echo "<p>Hi, what can I help you with?</p>";
-    echo "<button onclick=\"processSelection('investing')\">I am interested in investing.</button>";
+    echo "<button onclick=\"processSelection('prospect')\">I am interested in investing.</button>";
     echo "<button onclick=\"processSelection('investor')\">I'm an investor and need assistance.</button>";
     echo "<button onclick=\"processSelection('other')\">Something else.</button>";
 
@@ -127,8 +131,8 @@ function followUpChoice(choice) {
 function processSelection($selection) {
     switch ($selection) {
 
-        // If the person is interested in investing
-        case 'investing':
+        // If the person is interested in 
+        case 'prospect':
             echo "<p>Great! How can I help?</p>";
             echo "<button onclick=\"processSelection('appointment')\">I’d like to set up an appointment.</button>";
             echo "<button onclick=\"processSelection('roi')\">What is the ROI?</button>";
@@ -145,29 +149,29 @@ function processSelection($selection) {
             break;
         case 'appointment':
             echo "<p>Great, I will forward you to the scheduling page now.</p>";
-            echo "<script>window.open('scheduling-page-url', '_blank');</script>";
+            echo "<script>window.open('https://invest.golfsuites.com/schedule-a-call/', '_blank');</script>"; // TODO change email as needed for company
             echo "<script>setTimeout(function() { askAnythingElse(); }, 3000);</script>";
             break;
         case 'roi':
-            echo "<p>TODO</p>";
+            echo "<p>Good question. ROI is a tricky subject because I am sure you have heard the saying the past performance does not guarantee future results. This applies to even the most solid of investments like real estate and the S&P 500. But in this case we are aiming for a buyout or an IPO, which can lead to tremendous gains, along with the associated risk. Also just remember no ROI is ever guaranteed, and it would be unwise of us to make any guarantee of what ROI would be.</p>";
             echo "<script>setTimeout(function() { askAnythingElse(); }, 3000);</script>";
             break;
         case 'exit':
-            echo "<p>TODO</p>";
+            echo "<p>We plan to build a stable and profitable company that is ripe for a buyout by a larger company, or perhaps position ourselves for an IPO. Either of which would provide for a possible liquidation event for all investors.</p>";
             echo "<script>setTimeout(function() { askAnythingElse(); }, 3000);</script>";
             break;
         case 'scam':
-            echo "<p>Please click <a href='SEC-portal-link'>HERE</a> to access the company’s portal on the SEC’s database for audited financials and bad actor checks.</p>";
+            echo "<p>It is definitely good to do all your due diligence and look out for scams. This company and it's management team has gone through very thorough SEC qualifications and bad actor checks. Please click <a href='https://www.sec.gov/edgar/browse/?CIK=1765347'>HERE</a> to access the company’s portal on the SEC’s database for audited financials and bad actor checks.</p>"; // TODO change link to correct company if changing code
             echo "<script>setTimeout(function() { askAnythingElse(); }, 3000);</script>";
             break;
 
         // If the person is already an investor
         case 'access_portal':
-            echo "<p>Your shares are registered with ComputerShare. You can click <a href='link-to-pdf'>HERE</a> to download a PDF that goes over the instructions on accessing the portal.</p>";
+            echo "<p>Your shares are registered with ComputerShare. You can click <a href='https://golfsuites.com/sharepoint/shared_files/gs_computershare.pdf?utm_source=ai_chatbot&utm_medium=referral&utm_campaign=investment_page'>HERE</a> to download a PDF that goes over the instructions on accessing the portal.</p>";
             echo "<script>setTimeout(function() { askAnythingElse(); }, 3000);</script>";
             break;
         case 'financials':
-            echo "<p>You can view the most recent audited financials on the SEC’s database <a href='link-to-sec-database'>HERE</a>.</p>";
+            echo "<p>You can view the most recent audited financials on the SEC’s database <a href='https://www.sec.gov/edgar/browse/?CIK=1765347'>HERE</a>.</p>";
             echo "<script>setTimeout(function() { askAnythingElse(); }, 3000);</script>";
             break;
         case 'existing_investments':
@@ -176,17 +180,12 @@ function processSelection($selection) {
             echo "<button onclick=\"processSelection('no_appointment')\">No</button>";
             break;
         case 'book_appointment':
-            echo "<script>window.open('booking-page-url', '_blank');</script>";
+            echo "<script>window.open('https://invest.golfsuites.com/schedule-a-call/', '_blank');</script>"; // TODO change email as needed for company
             echo "<p>Opening the scheduling page...</p>";
             echo "<script>setTimeout(function() { askAnythingElse(); }, 3000);</script>";
             break;
         case 'no_appointment':
-            echo "<p>No problem, you can always email <a href='mailto:investors@example.com'>investors@example.com</a> with this question.</p>";
-            echo "<script>setTimeout(function() { askAnythingElse(); }, 3000);</script>";
-            break;
-        case 'appointment':
-            echo "<p>I will forward you to the scheduling page now.</p>";
-            echo "<script>window.open('scheduling-page-url', '_blank');</script>";
+            echo "<p>No problem, you can always email <a href='mailto:investors@golfsuites.com'>investors@example.com</a> with this question.</p>"; // TODO change email as needed for company
             echo "<script>setTimeout(function() { askAnythingElse(); }, 3000);</script>";
             break;
 
